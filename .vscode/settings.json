@@ -5,7 +5,8 @@
     "python.testing.unittestEnabled": false, // ms-python.python
     "python.testing.pytestEnabled": true,
     "python.testing.pytestArgs": [
-      "recipes"
+      "recipes",
+      "."
     ], // -x to bail
     "python.linting.flake8Enabled": true,
     "python.linting.mypyEnabled": true,
