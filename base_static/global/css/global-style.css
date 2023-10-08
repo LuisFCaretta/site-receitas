@@ -1,0 +1,6 @@
+@media (max-width: 60rem) {
+    .main-content-list,
+    .form-content-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+}

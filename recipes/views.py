@@ -5,12 +5,14 @@ from django.db.models import Q
 from utils.pagination import make_pagination
 import os
 
+
 PER_PAGES = int(os.environ.get('PER_PAGES', 9))
 
 
 def home(request):
     recipes = Recipe.objects.filter(is_published=True).order_by('-id')
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGES)
+
     return render(request, 'recipes/pages/home.html', context={
         'recipes': page_obj,
         'pagination_range': pagination_range,
