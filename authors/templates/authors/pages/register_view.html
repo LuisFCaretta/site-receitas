@@ -11,14 +11,16 @@
     {% if form.errors %}
         <div class="main-content center container">
             <div class="form-content form-content-grid">
-            <div class="form-group">
-                <div class="message message-error">
-                    There are errors in the form. Please, fix them and send again.
+                <div class="form-group">
+                    <div class="message message-error">
+                        There are errors in the form. Please, fix them and send again.
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     {% endif %}
+
+    {% include "recipes/partials/messages.html" %}
 
     <div class="main-content container">
         <form method="POST" action="{% url 'authors:create' %}">
