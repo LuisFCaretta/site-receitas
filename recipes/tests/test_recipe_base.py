@@ -6,37 +6,37 @@ class RecipeTestBase(TestCase):
     def setUp(self) -> None:
         return super().setUp()
 
-    def make_category(self, name='Category'):
+    def make_category(self, name="Category"):
         return Category.objects.create(name=name)
 
     def make_author(
-            self,
-            first_name='User',
-            last_name='Created',
-            username='username',
-            password='User12345',
-            email='user@user.com'
+        self,
+        first_name="User",
+        last_name="Created",
+        username="username",
+        password="User12345",
+        email="user@user.com",
     ):
         return User.objects.create_user(
             first_name=first_name,
             last_name=last_name,
             username=username,
             password=password,
-            email=email
+            email=email,
         )
 
     def make_recipe(
         self,
         category_data=None,
         author_data=None,
-        title='Recipe title',
-        description='Recipe decription',
-        slug='recipe-title',
-        preparation_time='10',
-        preparation_time_unit='Minutos',
-        servings='5',
-        servings_unit='Pessoas',
-        preparation_steps='preparation steps are here',
+        title="Recipe title",
+        description="Recipe decription",
+        slug="recipe-title",
+        preparation_time="10",
+        preparation_time_unit="Minutos",
+        servings="5",
+        servings_unit="Pessoas",
+        preparation_steps="preparation steps are here",
         preparation_steps_is_html=False,
         is_published=True,
     ):
