@@ -20,7 +20,8 @@ class RecipeHomeViewTest(RecipeTestBase):
     def test_recipe_home_template_shows_no_recipes_found_if_no_recipes(self):
         response = self.client.get(reverse("recipes:home"))
         self.assertIn(
-            "<h1>No recipes found here 😢</h1>", response.content.decode("utf-8")
+            "<h1>No recipes found here 😢</h1>",
+            response.content.decode("utf-8")
         )
 
     def test_recipe_home_template_loads_recipes(self):
@@ -39,9 +40,7 @@ class RecipeHomeViewTest(RecipeTestBase):
 
     @patch("recipes.views.PER_PAGES", new=9)
     def test_recipe_home_is_paginated(self):
-        for i in range(18):
-            kwargs = {"author_data": {"username": f"user-{i}"}, "slug": f"slug-{i}"}
-            self.make_recipe(**kwargs)
+        self.make_recipe_in_batch(qtd=18)
         response = self.client.get(reverse("recipes:home"))
         recipes = response.context["recipes"]
         paginator = recipes.paginator
@@ -51,9 +50,7 @@ class RecipeHomeViewTest(RecipeTestBase):
 
     @patch("recipes.views.PER_PAGES", new=9)
     def test_invalid_page_query_uses_page_1(self):
-        for i in range(18):
-            kwargs = {"author_data": {"username": f"user-{i}"}, "slug": f"slug-{i}"}
-            self.make_recipe(**kwargs)
+        self.make_recipe_in_batch(qtd=18)
 
         response = self.client.get(reverse("recipes:home") + "?page=1A")
         self.assertEqual(response.context["recipes"].number, 1)
