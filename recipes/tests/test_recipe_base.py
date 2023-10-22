@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase  # type: ignore
 from recipes.models import Recipe, Category, User
 
 
@@ -59,8 +59,12 @@ class RecipeMixin:
     def make_recipe_in_batch(self, qtd=10):
         recipes = []
         for i in range(qtd):
-            kwargs = {"author_data": {
-                "username": f"user-{i}"}, "slug": f"slug-{i}"}
+            kwargs = {
+                'title': f'Recipe title {i}',
+                "author_data": {"username": f"user-{i}"},
+                "slug": f"slug-{i}"
+            }
+
             recipe = self.make_recipe(**kwargs)
             recipes.append(recipe)
         return recipes
