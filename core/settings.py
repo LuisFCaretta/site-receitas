@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "INSECURE")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get("DEBUG") == "1" else False
 
-ALLOWED_HOSTS = ['f2q8dg-8000.csb.app', 'f2q8dg-5555.csb.app']  # type: ignore
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]  # type: ignore
 
 
 # Application definition
